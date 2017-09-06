@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/jquery/2.0.0/jquery.min.js"></script>
+		<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+		<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+		<title>天猫首页</title>
+	</head>
+	
+	<style type="text/css">
+		nav{
+			font-size: 12px;
+			font-family: arial;
+		}.redcolor{
+			color: #c40000 !important;
+		}
+		nav.top{
+			color: #999;
+			background-color: #f2f2f2;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #e7e7e7;
+		}
+		nav.top span,nav.top a{
+			color: #999;
+			margin: 0px 10px 0px 10px;
+		}
+		nav.top a:hover{
+			color: #C40000;
+			text-decoration: none;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.search div.searchDiv{
+			background-color: #C40000;
+			width: 400px;
+			margin: 50px auto;
+			padding: 1px;
+			height: 40px;
+			display: block;
+		}
+		div.search div.searchDiv input{
+			width: 275px;
+			border: 1px solid transparent;
+			margin: 1px;
+			height: 36px;
+			outline: none;
+		}
+		div.search div.searchDiv button{
+			width: 110px;
+			border: 1px solid transparent;
+			background-color: #C40000;
+			color: white;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		div.search div.searchBelow{
+			margin-top: 3px;
+			margin-left: -60px;
+		}
+		div.search div.searchBelow span{
+			color: #999;
+		}
+		div.search div.searchBelow a{
+			color: #999;
+			font-size: 14px;
+			padding: 0px 20px;
+		}
+		div.search img.logo{
+			position: absolute;
+			top: 30px;
+			left: 0px;
+			z-index: -1;
+		}
+		div.search body{
+			font-size: 12px;
+			font-family: arial;
+		}
+		div.search div.searchBelow a:hover{
+			color: #C40000;
+			text-decoration: none;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.foot{
+			border-top-style: solid;
+			border-top-width: 1px;
+			border-top-color: #E7E7E7;
+		}
+		div.foot_ensure{
+			margin-top: 24px;
+			margin-bottom: 24px;
+			text-align: center;
+		}
+		div.foot_desc{
+			border-top-style: solid;
+			border-top-width: 1px;
+			border-top-color: #E7E7E7;
+			padding-top: 30px;
+			margin-left: 0px 20px;
+		}
+		div.foot_desc div.descColumn{
+			width: 20%;
+			float: left;
+			padding-left: 120px;
+		}
+		div.foot_desc div.descColumn span{
+			font-size: 16px;
+			color: #646464;
+			font-weight: bold;
+		}
+		div.foot_desc div.descColumn a{
+			display: block;
+			padding-top: 3px;
+		}
+		div.foot{
+			color: #999999;
+		}
+		a{
+			color: #999999;
+		}
+		a:hover{
+			color: #C40000;
+			text-decoration: none;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.foot_bottom{
+			margin-left: 0px;
+			margin-top: 200px;
+			border-top-style: solid;
+			border-top-width: 1px;
+			border-top-color: #E7E7E7;
+		}
+		div.copyright{
+			background-color: black;
+			border-top-style: solid;
+			border-top-width: 2px;
+			border-top-color: #C40000;
+		}
+		div.copyright span.slash{
+			color: white;
+		}
+		div.foot_bottom div.copyright div.whitelink a{
+			color: white;
+			padding: 0px 5px;
+		}
+		div.foot_bottom div.copyright div.whitelink{
+			/*background-color: black;*/
+			padding: 10px 0px;
+			margin-left: 10px;
+		}
+		div.license{
+			/*background-color: black;*/
+			margin: 10px 0px;
+			color: #686868;
+		}
+		div.license span{
+			color: #a4a4a4;
+		}
+		div.license div.copyRightYear{
+			margin: 10px 0px;
+			color: #686868;
+		}
+		img.cateye{
+			margin-left: 20px;
+		}
+		body{
+			font-size: 12px;
+			font-family: arial;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.categoryAndCarousel{
+			width: 100%;
+			position: relative;
+		}
+		div.categoryAndCarousel div.headMenuBar{
+			background-color: #dd2727;
+		}
+		div.categoryAndCarousel div.headMenuBar div.head{
+			width: 200px;
+			color: white;
+			background-color: #c60a0a;
+			margin-left: 20px;
+			line-height: 36px;
+			font-size: 16px;
+			font-weight: bold;
+			display: inline-block;
+		}
+		div.categoryAndCarousel div.rightMenu{
+			display: inline-block;
+		}
+		div.categoryAndCarousel div.rightMenu span{
+			margin: 0px 20px 0px 20px;
+		}
+		div.categoryAndCarousel div.rightMenu img{
+			height: 30px;
+		}
+		div.categoryAndCarousel div.rightMenu a{
+			color: white;
+			font-size: 16px;
+			text-decoration: none;
+		}
+		div.categoryAndCarousel div.carousel-of-product{
+			width: 1024px;
+			height: 510px;
+			margin: 0px auto;
+		}
+		img.carouselImage{
+			height: 510px !important;
+		}
+		div.carouselBackgroundDiv{
+			width: 100%;
+			height: 510px;
+			position: absolute;
+			background-color: #e8e8e8;
+			top: 36px;
+			z-index: -1;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.categoryMenu{
+			width: 200px;
+			height: 510px;
+			margin-left: 20px;
+			position: absolute;
+			top: 204px;
+			left: 0px;
+			background-color: #e2e2e3;
+			z-index: 1;
+		}
+		div.categoryMenu a{
+			font-size: 14px;
+		}
+		div.categoryMenu a:hover{
+			color: lightskyblue;
+			text-decoration: none;
+			
+		}
+		div.eachCategory{
+			line-height: 30px;
+			padding-left: 10px;
+		}
+		div.eachCategory span{
+			margin-right: 10px;
+		}
+		div.eachCategory:hover{
+			background-color: white;
+		}
+		div.productsAsideCategory{
+			height: 510px;
+			width: 780px;
+			position: absolute;
+			top: 204px;
+			left: 220px;
+			background-color: white;
+			z-index: 1;
+			display: none;
+			/*visibility: hidden;*/
+		}
+		div.productsAsideCategory div.row{
+			margin: 20px 80px 0px 80px;
+		}
+		div.productsAsideCategory div.row a{
+			font-size: 14px;
+			margin: 8px;
+		}
+		div.productsAsideCategory div.seperator{
+			margin-top: 20px;
+			border-bottom-style: dashed;
+			border-bottom-width: 1px;
+			border-bottom-color: #E7E7E7;
+		}
+		img.catear{
+			position: absolute;
+			height: 15px;
+			display: none;
+		}
+	</style>
+	
+	<style type="text/css">
+		div.homepageProducts{
+			background-color: #f5f5f5;
+			padding: 50px 110px 50px 110px;
+			margin: 10px auto;
+			width: 100%;
+		}
+		div.productItem{
+			width: 200px;
+			height: 285px;
+			border: 1px solid white;
+			background-color: white;
+			margin: 8px 4px;
+			float: left;
+			cursor: pointer;
+		}
+		div.productItem span.productItemDesc{
+			font-size: 12px;
+			color: #666666;
+			display: block;
+			padding: 16px;
+		}
+		div.productItem span.productPrice{
+			font-size: 16px;
+			color: #ff003a;
+			display: block;
+			padding-left: 16px;
+			margin-top: -10px;
+		}
+		div.productItem img{
+			width: 187px;
+			height: 190px;
+		}
+		div.productItem img:hover{
+			opacity: 0.7;
+			filter:alpha(opacity=70);
+		}
+		div.eachHomepageCategoryProducts{
+			margin: 0px 0px 40px 0px;
+		}
+		div.productItem a.productItemDescLink{
+			display: inline-block;
+			height: 66px;
+		}
+		span.categoryTitle{
+			font-size: 16px;
+			margin-left: 30px;
+			color: #646464;
+			font-weight: bold;
+		}
+		div.left-mark{
+			display: inline-block;
+			height: 20px;
+			vertical-align: top;
+			width: 5px;
+			background-color: #19c8a9;
+		}
+		img.endpng{
+			display: block;
+			width: 82px;
+			margin: 0px auto;			
+		}
+	</style>
+	
+	<script>
+		function showProductsAsideCategory(cid){
+			$("div.eachCategory[cid="+cid+"]").css("background-color","white");
+			$("div.eachCategory[cid="+cid+"]").css("color","lightskyblue");
+			$("div.productsAsideCategory[cid="+cid+"]").show();
+		}
+		function hideProductsAsideCategory(cid){
+			$("div.eachCategory[cid="+cid+"]").css("background-color","#e2e2e3");
+			$("div.eachCategory[cid="+cid+"]").css("color","#999999");
+			$("div.productsAsideCategory[cid="+cid+"]").hide();
+		}
+		$(function(){
+			$("div.eachCategory").mouseenter(function(){
+//				$("div.productsAsideCategory").show();
+				var cid = $(this).attr("cid");
+				showProductsAsideCategory(cid);
+			});
+			$("div.eachCategory").mouseleave(function(){
+				var cid = $(this).attr("cid");
+				hideProductsAsideCategory(cid);
+			});
+			$("div.productsAsideCategory").mouseenter(function(){
+				var cid = $(this).attr("cid");
+				showProductsAsideCategory(cid);
+			});
+			$("div.productsAsideCategory").mouseleave(function(){
+				var cid = $(this).attr("cid");
+				hideProductsAsideCategory(cid);
+			});
+		});
+		
+	</script>
+	
+	<!--导航-->
+	<nav class="top">
+		
+		<a href="#nowhere">
+			<span class="glyphicon glyphicon-home redcolor"></span>天猫首页
+		</a>
+		<span>喵，欢迎来到天猫</span>
+		<a href="#nowhere">请登录</a>
+		<a href="#nowhere">免费注册</a>
+		
+		<span class="pull-right">
+			<a href="#nowhere">我的订单</a>
+			<a href="#nowhere">
+				<span class="glyphicon glyphicon-shopping-cart redcolor"></span>
+				购物车<strong>0</strong>件
+			</a>
+		</span>
+	</nav>
+	
+	
+	<!--搜索栏-->
+	<div class="search">
+		<a href="#nowhere"><img class="logo" src="http://how2j.cn/tmall/img/site/logo.gif" id="logo"</a>
+		<div class="searchDiv">
+			<input type="text" placeholder="时尚男鞋  太阳镜 " name="keyword" />
+            <button class="searchButton" type="submit">搜索</button>
+			<div class="searchBelow">
+				<span>
+					<a href="#nowhere">T恤男</a><span>|</span>
+				</span>
+				<span>
+					<a href="#nowhere">连衣裙</a><span>|</span>
+				</span>
+				<span>
+					<a href="#nowhere">夏凉被</a><span>|</span>
+				</span>
+				<span>
+					<a href="#nowhere">驱蚊液</a>
+				</span>
+			</div>
+		</div>
+		
+	</div>
+	<!--<div style="height: 50px"></div>-->
+	
+	
+	<!--商品分类和轮播-->
+	<script>
+		$(function(){
+		    $("div.rightMenu span").mouseenter(function(){
+		        var left = $(this).position().left;
+		        var top = $(this).position().top;
+		        var width = $(this).css("width");
+		        var destLeft = parseInt(left) + parseInt(width)/2;
+		        $("img#catear").css("left",destLeft);
+		        $("img#catear").css("top",top + 145);
+		        $("img#catear").fadeIn(500);
+		    });
+		    $("div.rightMenu span").mouseleave(function(){
+		        $("img#catear").hide();
+		    });
+		});
+	</script>
+	<!--<div style="height: 50px;"></div>-->
+	<img class="catear" id="catear" src="http://how2j.cn/tmall/img/site/catear.png"  />
+	<div class="categoryAndCarousel" id="categoryAndCarousel">
+		
+		<div class="headMenuBar" id="headMenuBar">
+			<div class="head" id="head">
+				<span class="glyphicon glyphicon-th-list" style="margin-left: 10px;"></span>
+				<span style="margin-left: 10px;">商品分类</span>
+			</div>
+			<div class="rightMenu" id="rightMenu">
+				<span><a href="#nowhere"><img src="http://how2j.cn/tmall/img/site/chaoshi.png" /></a></span>
+				<span><a href="#nowhere"><img src="http://how2j.cn/tmall/img/site/guoji.png" /></a></span>
+				<span><a href="#nowhere">天猫会员</a></span>
+				<span><a href="#nowhere">品牌街</a></span>
+				<span><a href="#nowhere">电器城</a></span>
+				<span><a href="#nowhere">喵鲜生</a></span>
+				<span><a href="#nowhere">医药馆</a></span>
+				<span><a href="#nowhere">营业厅</a></span>
+				<span><a href="#nowhere">魅力惠</a></span>
+				<span><a href="#nowhere">飞猪旅行</a></span>
+				<span><a href="#nowhere">苏宁易购</a></span>
+			</div>
+		</div>
+		
+		<div data-ride="carousel" class="carousel-of-product slide" id="carousel-of-product">
+			<!--indicators-->
+			<ol class="carousel-indicators">
+				<li class="active" data-slide-to="0" data-target="#carousel-of-product"></li>
+				<li class="" data-slide-to="1" data-target="#carousel-of-product"></li>
+				<li class="" data-slide-to="2" data-target="#carousel-of-product"></li>
+				<li class="" data-slide-to="3" data-target="#carousel-of-product"></li>
+			</ol>
+			<!--wrapper for slides-->
+			<div role="list-box" class="carousel-inner">
+				<div class="item active">
+					<img class="carousel carouselImage" src="http://how2j.cn/tmall/img/lunbo/1.jpg" />
+				</div>
+				<div class="item">
+					<img class="carouselImage" src="http://how2j.cn/tmall/img/lunbo/2.jpg" />
+				</div>
+				<div class="item">
+					<img class="carouselImage" src="http://how2j.cn/tmall/img/lunbo/3.jpg" />
+				</div>
+				<div class="item">
+					<img class="carouselImage" src="http://how2j.cn/tmall/img/lunbo/4.jpg" />
+				</div>
+			</div>
+			<div class="carouselBackgroundDiv"></div>
+		</div>
+	</div>
+	
+	
+	<div class="categoryAndCarousel" style="position: relative;"></div>
+	<div class="categoryMenu">
+		<div class="eachCategory" cid="83">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">平板电视</a>
+		</div>
+		<div class="eachCategory" cid="82">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">马桶</a>
+		</div>
+		<div class="eachCategory" cid="81">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">沙发</a>
+		</div>
+		<div class="eachCategory" cid="80">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">电热水器</a>
+		</div>
+		<div class="eachCategory" cid="79">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">平衡车</a>
+		</div>
+		<div class="eachCategory" cid="78">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">扫地机器人</a>
+		</div>
+		<div class="eachCategory" cid="77">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">原汁机</a>
+		</div>
+		<div class="eachCategory" cid="76">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">冰箱</a>
+		</div>
+		<div class="eachCategory" cid="75">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">空调</a>
+		</div>
+		<div class="eachCategory" cid="74">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">男女手表</a>
+		</div>
+		<div class="eachCategory" cid="73">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">男士手拿包</a>
+		</div>
+		<div class="eachCategory" cid="72">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">男士西服</a>
+		</div>
+		<div class="eachCategory" cid="71">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">时尚男鞋</a>
+		</div>
+		<div class="eachCategory" cid="70">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">品牌女装</a>
+		</div>
+		<div class="eachCategory" cid="69">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">太阳镜</a>
+		</div>
+		<div class="eachCategory" cid="68">
+			<span class="glyphicon glyphicon-link"></span>
+			<a href="#nowhere">安全座椅</a>
+		</div>
+	</div>
+	<div style="position:relative; left: 0px; top: 0px;"></div>
+	<div class="productsAsideCategory" cid="83">
+		<div class="row">
+			<a href="#nowhere">大屏影院</a>
+			<a href="#nowhere">周末</a>
+			<a href="#nowhere">新品特惠</a>
+			<a href="#nowhere">32寸电视机</a>
+			<a href="#nowhere">智能网络</a>
+			<div class="seperator"></div>
+		</div>
+		<div class="row ">
+            <a href="##nowhere">USB高清解</a>
+			<a href="##nowhere">芒果TV在线</a>
+			<a href="##nowhere">抢购价</a>
+			<a href="##nowhere">USB解码</a>
+			<a href="##nowhere">32英吋</a>
+			<a href="##nowhere">10核</a>
+			<a href="##nowhere">TCL品牌日</a>
+            <div class="seperator"></div>
+        </div>        
+        <div class="row ">
+			<a href="##nowhere">不要赠品</a>
+            <a href="##nowhere">新品上市</a>
+            <a href="##nowhere">4K硬屏</a>
+            <a href="##nowhere">领100元券</a>
+            <a href="##nowhere">智能高清</a>
+            <a href="##nowhere">8月，酷暑</a>
+            <a href="##nowhere">8月大促</a>
+            <a href="##nowhere">天猫定制</a>
+            <div class="seperator"></div>
+        </div>        
+        <div class="row ">
+			<a href="##nowhere">智能操作系统</a>
+            <a href="##nowhere">金色外观</a>
+            <a href="##nowhere">三星曲屏</a>
+            <a href="##nowhere">客厅爆款</a>
+            <a href="##nowhere">八核配置</a>
+            <a href="##nowhere">限时特惠</a>
+            <div class="seperator"></div>
+        </div>
+        <div class="row ">
+			<a href="##nowhere">限时特惠</a>
+            <a href="##nowhere">热销爆款</a>
+            <a href="##nowhere">4K全高清</a>
+            <a href="##nowhere">六核智能</a>
+            <a href="##nowhere">14核4k</a>
+            <a href="##nowhere">YUNOS</a>
+            <a href="##nowhere">64位处理器</a>
+            <div class="seperator"></div>
+        </div>
+        <div class="row ">
+			<a href="##nowhere">YUNOS</a>
+            <a href="##nowhere">微信电视</a>
+            <a href="##nowhere">4K超清</a>
+            <a href="##nowhere">64位真4k</a>
+            <a href="##nowhere">10核机芯</a>
+            <a href="##nowhere">v字黑釉底座</a>
+            <a href="##nowhere">4k超清</a>
+            <div class="seperator"></div>
+        </div>
+        <div class="row ">
+			<a href="##nowhere">64位14核</a>
+            <a href="##nowhere">海量影视</a>
+            <a href="##nowhere">人气爆款</a>
+            <a href="##nowhere">限时特惠</a>
+            <a href="##nowhere">真4K屏</a>
+            <a href="##nowhere">65寸巨屏</a>
+            <a href="##nowhere">天猫定制</a>
+            <a href="#nowhere">4K超清视界</a>
+            <div class="seperator"></div>
+        </div>
+        <div class="row ">
+			<a href="##nowhere">55寸旗舰</a>
+            <a href="##nowhere">4K机皇</a>
+            <a href="##nowhere">曲面机皇</a>
+            <a href="##nowhere">轻薄4K</a>
+        </div>
+	</div>
+	
+	<!--首页商品-->
+	<div class="homepageProducts">
+		<div class="eachOfHomepageProducts">
+			<div class="left-mark"></div>
+			<span class="categoryTitle">太阳镜</span>
+			<br />
+			<div class="productItem">
+				<a href="#nowhere"><img width="100px;" src="http://how2j.cn/tmall/img/productSingle_middle/9543.jpg"</a>
+				<a href="#nowhere" class="productItemDescLink">
+					<span class="productItemDesc">[热销]好先生同款墨镜孙红雷偏光男士太阳镜韩明星</span>
+				</a>
+				<span class="productPrice">97.5</span>
+			</div>
+			<div class="productItem">
+				<a href="#nowhere"><img width="100px;" src="http://how2j.cn/tmall/img/productSingle_middle/9532.jpg"</a>
+				<a href="#nowhere" class="productItemDescLink">
+					<span class="productItemDesc">[热销]陌森太阳眼镜男女2016偏光定制驾驶近视</span>
+				</a>
+				<span class="productPrice">518.7</span>
+			</div>
+			<div class="productItem">
+				<a href="#nowhere"><img width="100px;" src="http://how2j.cn/tmall/img/productSingle_middle/9521.jpg"</a>
+				<a href="#nowhere" class="productItemDescLink">
+					<span class="productItemDesc">[热销]帕莎Prsr太阳镜女偏光镜潮范冰冰同款女</span>
+				</a>
+				<span class="productPrice">624.00</span>
+			</div>
+			<div class="productItem">
+				<a href="#nowhere"><img width="100px;" src="http://how2j.cn/tmall/img/productSingle_middle/9510.jpg"</a>
+				<a href="#nowhere" class="productItemDescLink">
+					<span class="productItemDesc">[热销]变色眼镜男女款半框太阳镜大框潮流防辐射防</span>
+				</a>
+				<span class="productPrice">178.00</span>
+			</div>
+			<div class="productItem">
+				<a href="#nowhere"><img width="100px;" src="http://how2j.cn/tmall/img/productSingle_middle/9499.jpg"</a>
+				<a href="#nowhere" class="productItemDescLink">
+					<span class="productItemDesc">[热销]
+					新款男士偏光太阳镜日夜两用墨镜潮运动开车
+					</span>
+				</a>
+				<span class="productPrice">560.00</span>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<div class="eachHomepageCategoryProducts">
+            <div class="left-mark"></div>
+            <span class="categoryTitle">安全座椅</span>
+            <br>
+            <div class="productItem">
+                <a href="##nowhere"><img width="100px" src="http://how2j.cn/tmall/img/productSingle_middle/10192.jpg"></a>
+                <a href="##nowhere" class="productItemDescLink">
+                    <span class="productItemDesc">[热销]新生儿婴儿提篮式安全座椅汽车用车载儿童安</span>
+                </a>
+                <span class="productPrice">882.00</span>
+            </div>
+            <div class="productItem">
+                <a href="##nowhere"><img width="100px" src="http://how2j.cn/tmall/img/productSingle_middle/10181.jpg"></a>
+                <a href="##nowhere" class="productItemDescLink">
+                    <span class="productItemDesc">[热销]REEBABY汽车儿童安全座椅ISOFI</span>
+                </a>
+                <span class="productPrice">1,344.00</span>
+            </div>
+            <div class="productItem">
+                <a href="##nowhere"><img width="100px" src="http://how2j.cn/tmall/img/productSingle_middle/10170.jpg"></a>
+                <a href="##nowhere" class="productItemDescLink">
+                    <span class="productItemDesc">[热销]REEBABY儿童安全座椅9个月-12岁</span>
+                </a>
+                <span class="productPrice">1,216.00</span>
+            </div>
+            <div class="productItem">
+                <a href="##nowhere"><img width="100px" src="http://how2j.cn/tmall/img/productSingle_middle/10159.jpg"></a>
+                <a href="##nowhere" class="productItemDescLink">
+                    <span class="productItemDesc">[热销]好孩子汽车儿童安全座椅goodbaby9</span>
+                </a>
+                <span class="productPrice">1,199.40</span>
+            </div>
+            <div class="productItem">
+                <a href="##nowhere"><img width="100px" src="http://how2j.cn/tmall/img/productSingle_middle/10148.jpg"></a>
+                <a href="##nowhere" class="productItemDescLink">
+                    <span class="productItemDesc">[热销]惠尔顿儿童安全座椅isofix硬接口汽车</span>
+                </a>
+                <span class="productPrice">1,993.60</span>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    	<img src="http://how2j.cn/tmall/img/site/end.png" class="endpng" id="endpng">
+	</div>
+	
+	
+	
+	<!--页脚-->
+	<div style="display: block;" class="foot" id="foot">
+		<div class="foot_ensure" id="ensure">
+			<a href="#nowhere">
+				<img src="http://how2j.cn/tmall/img/site/ensure.png"/>
+			</a>
+		</div>
+		<div class="foot_desc" id="foot_desc">
+			<div class="descColumn">
+				<span class="descColumnTitle">购物指南</span>
+				<a href="#nowhere">免费注册</a>
+				<a href="#nowhere">开通支付宝</a>
+				<a href="#nowhere">支付宝充值</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">天猫保障</span>
+				<a href="#nowhere">发货保障</a>
+				<a href="#nowhere">售后规则</a>
+				<a href="#nowhere">缺货赔付</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">支付方式</span>
+				<a href="#nowhere">快捷支付</a>
+				<a href="#nowhere">信用卡</a>
+				<a href="#nowhere">蚂蚁花呗</a>
+				<a href="#nowhere">货到付款</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">商家服务</span>
+				<a href="#nowhere">商家入驻</a>
+				<a href="#nowhere">商家中心</a>
+				<a href="#nowhere">天猫智库</a>
+				<a href="#nowhere">天猫规则</a>
+				<a href="#nowhere">物流服务</a>
+				<a href="#nowhere">喵言喵语</a>
+				<a href="#nowhere">运营服务</a>
+			</div>
+			<div class="descColumn">
+				<span class="descColumnTitle">手机天猫</span>
+				<a href="#nowhere"><img src="http://how2j.cn/tmall/img/site/ma.png" /></a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="foot_bottom" id="foot_bottom">
+		<img src="http://how2j.cn/tmall/img/site/cateye.png" class="cateye" id="cateye"/>
+		<div class="copyright" id="copyright">
+			<div class="whitelink">
+				<a href="#nowhere">关于天猫</a>
+				<a href="#nowhere">帮助中心</a>
+				<a href="#nowhere">开放平台</a>
+				<a href="#nowhere">诚聘英才</a>
+				<a href="#nowhere">联系我们</a>
+				<a href="#nowhere">网站合作</a>
+				<a href="#nowhere">法律声明</a>
+				<a href="#nowhere">知识产权</a>
+				<a href="#nowhere">廉正举报</a>
+				<a href="#nowhere">规则意见征集</a>
+			</div>
+			<div class="whitelink">
+				<a href="#nowhere">阿里巴巴集团</a><span class="slash">|</span>
+				<a href="#nowhere">淘宝网</a><span class="slash">|</span>
+				<a href="#nowhere">天猫</a><span class="slash">|</span>
+				<a href="#nowhere">聚划算</a><span class="slash">|</span>
+				<a href="#nowhere">全球速卖通</a><span class="slash">|</span>
+				<a href="#nowhere">阿里巴巴国际交易市场</a><span class="slash">|</span>
+				<a href="#nowhere">1688</a><span class="slash">|</span>
+				<a href="#nowhere">阿里妈妈</a><span class="slash">|</span>
+				<a href="#nowhere">飞猪</a><span class="slash">|</span>
+				<a href="#nowhere">阿里云计算</a><span class="slash">|</span>
+				<a href="#nowhere">YunOS</a><span class="slash">|</span>
+				<a href="#nowhere">阿里通信</a><span class="slash">|</span>
+				<a href="#nowhere">万网</a><span class="slash">|</span>
+				<a href="#nowhere">高德</a><span class="slash">|</span>
+				<a href="#nowhere">UC</a><span class="slash">|</span>
+				<a href="#nowhere">友盟</a><span class="slash">|</span>
+				<a href="#nowhere">虾米</a><span class="slash">|</span>
+				<a href="#nowhere">阿里星球</a><span class="slash">|</span>
+				<a href="#nowhere">来往</a><span class="slash">|</span>
+				<a href="#nowhere">钉钉</a><span class="slash">|</span>
+				<a href="#nowhere">支付宝</a>
+			</div>
+			<div class="license">
+	            <span>增值电信业务经营许可证： 浙B2-20110446</span>
+	            <span>网络文化经营许可证：浙网文[2015]0295-065号</span>
+	            <span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
+	            <span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>
+	            <div class="copyRightYear">© 2003-2016 Arjen 版权所有</div>
+	            <div>
+	                <img src="http://how2j.cn/tmall/img/site/copyRight1.jpg">
+	                <img src="http://how2j.cn/tmall/img/site/copyRight2.jpg">
+	            </div>
+	        </div>
+        </div>
+	</div>
+</html>
