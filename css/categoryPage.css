@@ -1,0 +1,120 @@
+div.categoryPageDiv{
+	max-width: 1036px;
+	margin: 10px auto;
+}
+div.categorySortBar{
+	background-color: #FAF9F9;
+	margin: 40px 20px 20px 20px;
+	padding: 10px;
+}
+table.categorySortBarTable{
+	/*border-collapse: collapse;*/
+	display: inline-block;
+}
+table.categorySortBarTable td{
+	border: 1px solid #CCCCCC;
+	font-size: 12px;
+	height: 17px;
+	padding: 3px;
+}
+table.categorySortTable td.grayColumn{
+	background-color: #F1EDEC;
+}
+table.categorySortTable a{
+	color: #806F66;
+}
+table.categorySortTable a:hover{
+	color: #C40000;
+	text-decoration: none;
+}
+table.categorySortTable td:hover{
+	background-color: #F1EDEC;
+}
+table.categorySortBarTable input{
+	width: 50px;
+	height: 15px;
+	border-width: 0px;
+}
+table.categorySortBarTable td{
+	height: 15px;
+}
+table.categorySortBarTable td.grayColumn-priceMiddleColumn{
+	vertical-align: center;
+	color: #CCCCCC;
+	width: 5px;
+}
+body{
+	font-size: 12px;
+	font-family: arial;
+}
+img.productImage{
+	width: 100%;
+	height: 190px;
+}
+	div.categoriesDiv{
+		max-width: 1036px;
+		margin: 10px auto;
+}
+	div.productUnit{
+		width: 225px;
+		height: 338px;
+		float: left;
+		background-color: #FFFFFF;
+		margin: 12px 10px;
+		border: solid 3px #FFFFFF;
+}
+	div.productUnit:hover{
+		border:3px solid #C40000;
+}
+	div.productUnitFrame{
+		border: solid 1px #EEEEEE;
+		height: 100%;
+}
+	div.categoriesDiv span.productPrice{
+		color: #CC0000;
+		font-weight: bold;
+		font-size: 20px;
+		display: block;
+		margin: 10px 0px;
+}
+	div.categoriesDiv a.productLink{
+		margin: 10px 0px;
+		color: #333333;
+		text-decoration: none;
+		display: block;
+		height: 34px;
+}
+	div.categoriesDiv a.productLink:hover{
+		color: #C40000;
+}
+	div.categoriesDiv a.tmallLink{
+		color: #999999;
+		text-decoration: underline;
+		margin: 10px 0px;
+		display: block;
+}
+	div.categoriesDiv div.productInfo{
+		border-top: solid 1px #EEEEEE;
+		color: #999999;
+	}
+	div.categoriesDiv span.numOfDeal{
+		color: #B57C5B;
+		font-weight: bold;
+}
+	div.categoriesDiv span.comment{
+		border-left: solid 1px #EEEEEE;
+		border-right: solid 1px #EEEEEE;
+}
+	div.categoriesDiv span.numOfComment{
+		color: #3388BB;
+		font-weight: bold;
+}
+	div.productInfo span.monthNumOfDeal, div.productInfo span.comment{
+		display: inline-block;
+		width: 90px;
+		padding: 2px 5px;
+		/*height: 29px;*/
+}
+	div.productInfo span.wangwang{
+		padding-left: 5px;
+}
